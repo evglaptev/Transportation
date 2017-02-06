@@ -1,0 +1,13 @@
+E:\ServerLib\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+E:\ServerLib\Server\Server\bin\Debug\Server.dll
+E:\ServerLib\Server\Server\bin\Debug\Server.pdb
+E:\ServerLib\Server\Server\obj\Debug\Server.dll
+E:\ServerLib\Server\Server\obj\Debug\Server.pdb
+E:\ServerLib\Server\Server\bin\Debug\GeneratorUserInfo.dll
+E:\ServerLib\Server\Server\bin\Debug\GeneratorUserInfo.pdb
+E:\ServerLib\Server\Transportation\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+E:\ServerLib\Server\Transportation\Server\obj\Debug\Server.dll
+E:\ServerLib\Server\Transportation\Server\obj\Debug\Server.pdb
+E:\ServerLib\Server\Transportation\Server\bin\Debug\Server.dll
+E:\ServerLib\Server\Transportation\Server\bin\Debug\Server.pdb
+E:\ServerLib\Server\Transportation\Server\bin\Debug\GeneratorUserInfo.pdb
