@@ -15,5 +15,6 @@ namespace Server
                 return this.GetType().ToString();
             }
         }
+        public int managerId { get; set; }
     }
 }

@@ -16,21 +16,15 @@ namespace Server
             }
         }
 
-        public IList<int> driversId;
+        public IList<int> clientsId { get; set; }
+        public IList<int> driversId { get; set; }
 
         public Manager()
         {
             driversId = new List<int>();
+            clientsId = new List<int>();
         }
 
-        public Manager(params int[] value)
-        {
-            driversId = new List<int>();
-            foreach (var e in value)
-            {
-                driversId.Add(e);
-            }
 
-        }
     }
 }

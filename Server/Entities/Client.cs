@@ -16,6 +16,8 @@ namespace Server
             }
         }
 
+        public int managerId { get; set; }
+
 
 
     }

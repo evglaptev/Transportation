@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Server.Entities;
 
 namespace Server.Content
 {
     public class DbContext
     {
-        public static IDictionary<int, Person> getDictionaryPerson()
+        internal static IDictionary<int, Person> getDictionaryPerson()
         {
             IDictionary<int, Person> dict = new Dictionary<int, Person>();
             GeneratorUserInfo.Generator gen = new GeneratorUserInfo.Generator();
@@ -23,6 +24,11 @@ namespace Server.Content
 
             }
             return dict;
+        }
+
+        internal static IDictionary<int, Order> getDictionaryOrders()
+        {
+            return new Dictionary<int, Order>();
         }
     }
 }

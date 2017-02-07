@@ -18,7 +18,6 @@ namespace Server
         public abstract string Type { get; }
         
 
-
  
 
 

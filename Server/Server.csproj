@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContext.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Persons.cs" />
     <Compile Include="Interfaces\IClients.cs" />

@@ -1,0 +1,8 @@
+﻿@model int
+@{
+    ViewBag.Title = "createOrderSuccess";
+}
+
+<h2>Ваш заказ успешно создан!</h2>
+<p>Вашему заказу присвоен номер @Model</p><br />
+@Html.ActionLink("Информация о заказе", "getInfoAboutOrder", new { id = Model })

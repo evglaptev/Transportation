@@ -1,0 +1,24 @@
+﻿@model Server.Entities.Order
+@{
+    ViewBag.Title = "Создание заказа";
+}
+
+
+<h2>Заполните следующую форму: </h2>
+
+@using (Html.BeginForm("createOrder", "Default", FormMethod.Post))
+{
+    @Html.DisplayNameFor(p => p.AddressFrom)
+    @Html.EditorFor(p => p.AddressFrom)
+
+    @Html.DisplayNameFor(p => p.AddressTo)
+    @Html.EditorFor(p => p.AddressTo)
+
+    @Html.DisplayNameFor(p => p.DateTime)
+    @Html.EditorFor(p => p.DateTime)
+
+    <p><input type="submit" value="Заказать" /></p>
+
+}
+
+
