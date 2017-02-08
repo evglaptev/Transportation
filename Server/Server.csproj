@@ -46,7 +46,6 @@
     <Compile Include="Context\DbContext.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Person.cs" />
-    <Compile Include="Persons%28NotUse%29.cs" />
     <Compile Include="Interfaces\IClients.cs" />
     <Compile Include="Interfaces\IDrivers.cs" />
     <Compile Include="Interfaces\IPersons.cs" />
