@@ -14,7 +14,7 @@ namespace Server
         IDrivers Drivers { get; set; }
         IClients Clients { get; set; }
 
-        IDictionary<int, Person> context = DbContext.getDictionaryPerson();
+        IDictionary<int, Manager> context = DbContext.getDictionaryPerson();
         IDictionary<int, Order> ordersContext = DbContext.getDictionaryOrders();
 
 
@@ -26,6 +26,9 @@ namespace Server
 
         public int addOrder(Order order) {
             int key = ordersContext.Keys.Count;
+            int managerId = Managers.getManagerForOrderId(key);
+            order.ManagerId = managerId;
+            order.OrderId = key;
             ordersContext.Add(key, order);
             return key;
         }

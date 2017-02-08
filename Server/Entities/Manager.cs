@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,29 @@ namespace Server
         {
             get
             {
-                return this.GetType().ToString();
+                Type type = typeof(Manager);
+                return "Manager";
             }
         }
-
-        public IList<int> clientsId { get; set; }
-        public IList<int> driversId { get; set; }
+        
+        IList<int> clientsId { get; set; }
+        IList<int> driversId { get; set; }
+        IList<int> ordersId { get; set; }
 
         public Manager()
         {
             driversId = new List<int>();
             clientsId = new List<int>();
+            ordersId = new List<int>();
+        }
+        public void AddNewOrderId(int ordId)
+        {
+            ordersId.Add(ordId);
+        }
+
+        public int getOrdersCount()
+        {
+            return ordersId.Count;
         }
 
 

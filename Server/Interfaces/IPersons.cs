@@ -8,7 +8,6 @@ namespace Server
 {
     interface IPersons
     {
-        IDictionary<int, Person> personsDictionary { get; set; }
         Person getPersonById(int id);
         IEnumerable<Person> getAllPersons();
         int createPerson(Person human);

@@ -7,10 +7,10 @@ using System.Web.Mvc;
 
 namespace Portal.Controllers
 {
-    public class DefaultController : Controller
+    public class HomeController : Controller
     {
         static Server.Server serv;
-        public DefaultController()
+        public HomeController()
         {
             if (serv == null)
             {
@@ -26,7 +26,7 @@ namespace Portal.Controllers
         public ActionResult getInfoAboutOrder(int id)
         {
             Order order = serv.getOrderById(id);
-            return View();
+            return View(order);
         }
         [HttpGet]
         public ActionResult createOrder()
@@ -37,8 +37,12 @@ namespace Portal.Controllers
         public ActionResult createOrder(Order newOrder)
         {
            int orderId = serv.addOrder(newOrder);
-            if (orderId>=0)
-            return View("createOrderSuccess", orderId);
+            if (orderId >= 0)
+            {
+
+                return View("createOrderSuccess", orderId);
+
+            }
             return View("createOrderFail");
         }
     }

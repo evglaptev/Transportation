@@ -1,0 +1,20 @@
+﻿@model Server.Entities.Order
+@{
+    ViewBag.Title = "Информация о заказе";
+}
+
+<h2>Заказ № @Model.OrderId</h2>
+
+@Html.DisplayNameFor(p => p.AddressFrom)
+@Html.DisplayFor(p => p.AddressFrom)
+
+@Html.DisplayNameFor(p => p.AddressTo)
+@Html.DisplayFor(p => p.AddressTo)
+
+@Html.DisplayNameFor(p => p.DateTime)
+@Html.DisplayFor(p => p.DateTime)
+
+
+@Html.DisplayNameFor(p => p.ManagerId)
+@Html.DisplayFor(p => p.ManagerId)
+

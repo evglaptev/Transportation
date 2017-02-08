@@ -9,26 +9,28 @@ namespace Server.Content
 {
     public class DbContext
     {
-        internal static IDictionary<int, Person> getDictionaryPerson()
+        internal static IDictionary<int, Manager> getDictionaryPerson()
         {
-            IDictionary<int, Person> dict = new Dictionary<int, Person>();
+            IDictionary<int, Manager> managers = new Dictionary<int, Manager>();
             GeneratorUserInfo.Generator gen = new GeneratorUserInfo.Generator();
-            for (int i = 0; i < 20; i += 3) {
-                Person client = new Client() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber(), Age = gen.getAge() };
-                Person driver = new Driver() { Id = i + 1, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber(), Age = gen.getAge() };
-                Person manager = new Manager() { Id = i + 2, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber(), Age = gen.getAge() };
+            for (int i = 0; i < 3; i++) {
+                Person client = new Client() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+                Person driver = new Driver() { Id = i + 1, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+                Person manager = new Manager() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
 
-                dict.Add(new KeyValuePair<int, Person>(client.Id, client));
-                dict.Add(new KeyValuePair<int, Person>(driver.Id, driver));
-                dict.Add(new KeyValuePair<int, Person>(manager.Id, manager));
+                //dict.Add(new KeyValuePair<int, Person>(client.Id, client));
+                //dict.Add(new KeyValuePair<int, Person>(driver.Id, driver));
+                managers.Add(new KeyValuePair<int, Manager>(manager.Id, (Manager)manager));
 
             }
-            return dict;
+            return managers;
         }
 
         internal static IDictionary<int, Order> getDictionaryOrders()
         {
-            return new Dictionary<int, Order>();
+            Dictionary < int, Order > dict = new Dictionary<int, Order>();
+
+            return dict;
         }
     }
 }
