@@ -1,4 +1,4 @@
-﻿namespace Server
+﻿namespace Server.Interfaces
 {
     internal interface IDrivers:IPersons
     {

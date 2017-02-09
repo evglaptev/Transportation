@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server
+namespace Server.Entities
 {
-    class Manager : Person
+    public class Manager : Person
     {
         public override string Type
         {

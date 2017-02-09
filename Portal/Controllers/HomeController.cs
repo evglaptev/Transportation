@@ -45,5 +45,12 @@ namespace Portal.Controllers
             }
             return View("createOrderFail");
         }
+
+        public ActionResult managerInfo(int managerId)
+        {
+            Manager manager;
+            manager = serv.getManagerById(managerId);
+            return PartialView(manager);
+        }
     }
 }

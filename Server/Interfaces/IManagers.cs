@@ -1,6 +1,6 @@
 ﻿using Server.Entities;
 
-namespace Server
+namespace Server.Interfaces
 {
     internal interface IManagers : IPersons
     {

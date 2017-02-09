@@ -1,5 +1,6 @@
 ﻿using Server.Content;
 using Server.Entities;
+using Server.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,13 @@ namespace Server
         IEnumerable<Manager> getAllManagers()
         {
             return (IEnumerable<Manager>)Managers.getAllPersons();
+        }
+
+        public Manager getManagerById(int managerId)
+        {
+            Manager mng = (Manager)Managers.getPersonById(managerId);
+            if (mng == null) throw new NullReferenceException("Manager with id " + managerId + " not found.");
+            return mng;
         }
 
         //ITasks Tasks { get; set; }

@@ -127,6 +127,7 @@
     <Content Include="Views\Home\createOrder.cshtml" />
     <Content Include="Views\Home\getInfoAboutOrder.cshtml" />
     <Content Include="Views\Home\createOrderSuccess.cshtml" />
+    <Content Include="Views\Home\managerInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,5 @@
 ﻿using Server.Entities;
+using Server.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,9 @@ namespace Server
 
         public Person getPersonById(int id)
         {
-            throw new NotImplementedException();
+            Manager manager;
+            managersDictionary.TryGetValue(id, out manager);
+            return manager;
         }
 
         public IEnumerable<Person> getAllPersons()
