@@ -43,15 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GeneratorUserInfo">
+      <HintPath>..\..\..\..\Generator\GeneratorUserInfo\GeneratorUserInfo\bin\Debug\GeneratorUserInfo.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Server, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Server\bin\Debug\Server.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,11 +107,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Context\DbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Driver.cs" />
+    <Compile Include="Entities\Manager.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IClients.cs" />
+    <Compile Include="Interfaces\IDrivers.cs" />
+    <Compile Include="Interfaces\IManagers.cs" />
+    <Compile Include="Interfaces\IPersons.cs" />
+    <Compile Include="Managers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
