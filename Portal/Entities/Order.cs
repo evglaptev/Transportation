@@ -12,6 +12,8 @@ namespace Server.Entities
 
         public int OrderId { get; set; }
         public int ClientId { get; set; }
+
+        public int DriverId { get; set; }
         [DisplayName("Адрес подачи автомобиля: ")]
         public string AddressFrom { get; set; }
         [DisplayName("Адрес доставки: ")]

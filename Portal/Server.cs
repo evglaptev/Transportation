@@ -31,6 +31,8 @@ namespace Server
             order.ManagerId = managerId;
             order.OrderId = key;
             ordersContext.Add(key, order);
+            int driverId = Drivers.getDriverForOrderId(key);
+            
             return key;
         }
 

@@ -10,14 +10,14 @@ namespace Server
 {
     class Managers :  IManagers
     {
-        //  public Managers(IDictionary<int, Person> dict) : base(dict) { }
+
+        IDictionary<int, Manager> managersDictionary;
         public Managers(IDictionary<int, Manager> managersDictionary)
         {
             this.managersDictionary = managersDictionary;
         }
             
 
-        IDictionary<int, Manager> managersDictionary;
 
         public int getManagerForOrderId(int orderId)
         {
