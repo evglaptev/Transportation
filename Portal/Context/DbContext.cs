@@ -3,27 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Server.Entities;
+using Portal.Entities;
 
-namespace Server.Content
+namespace Portal.Content
 {
     public class DbContext
     {
-        internal static IDictionary<int, Manager> getDictionaryPerson()
+        static GeneratorUserInfo.Generator gen;
+        static IDictionary<int, Driver> drivers;
+        static IDictionary<int, Manager> managers;
+        static DbContext()
         {
-            IDictionary<int, Manager> managers = new Dictionary<int, Manager>();
-            GeneratorUserInfo.Generator gen = new GeneratorUserInfo.Generator();
-            for (int i = 0; i < 3; i++) {
-                Person client = new Client() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
-                Person driver = new Driver() { Id = i + 1, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
-                Person manager = new Manager() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+            drivers = new Dictionary<int, Driver>();
+            managers = new Dictionary<int, Manager>();
+            gen = new GeneratorUserInfo.Generator();
+
+            for (int i = 0; i < 10; i++)
+            {
+                //Person client = new Client() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+                Manager manager = new Manager() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+                Driver driver = new Driver() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
 
                 //dict.Add(new KeyValuePair<int, Person>(client.Id, client));
-                //dict.Add(new KeyValuePair<int, Person>(driver.Id, driver));
-                managers.Add(new KeyValuePair<int, Manager>(manager.Id, (Manager)manager));
+                managers.Add(i, manager);
+
+                drivers.Add(i, driver);
 
             }
+
+        }
+
+
+        internal static IDictionary<int, Manager> getDictionaryManagers()
+        {
             return managers;
+        }
+
+        internal static IDictionary<int, Driver> getDictionaryDrivers()
+        {
+            return drivers;
         }
 
         internal static IDictionary<int, Order> getDictionaryOrders()

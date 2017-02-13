@@ -1,23 +1,44 @@
-﻿using Server.Entities;
-using Server.Interfaces;
+﻿using Portal.Entities;
+using Portal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server
+namespace Portal
 {
     class Managers :  IManagers
     {
 
         IDictionary<int, Manager> managersDictionary;
+
         public Managers(IDictionary<int, Manager> managersDictionary)
         {
             this.managersDictionary = managersDictionary;
         }
-            
 
+        /*
+public Managers(IDictionary<int, Manager> managersDictionary)
+{
+   this.managersDictionary = managersDictionary;
+}
+
+public bool delManagerById(int managerId)
+{
+   return delPersonById(managerId, (IDictionary<int, Person>)managersDictionary);
+}
+
+public IEnumerable<Manager> getAllManagers()
+{
+   return (IEnumerable<Manager>)getAllPersons((IDictionary<int, Person>)managersDictionary);
+}
+
+public Manager getManagerById(int managerId)
+{
+   return (Manager)getPersonById(managerId, (IDictionary<int, Person>)managersDictionary);
+}
+*/
 
         public int getManagerForOrderId(int orderId)
         {
@@ -29,14 +50,10 @@ namespace Server
             //if (managerId == 0) throw new Exception();
             return managerId;
         }
-        /*
-        IDictionary<int, Manager> getAllManagers()
-        {
-            IDictionary<int,Manager> dict = (IDictionary<int, Manager>)managersDictionary.Where(p => p.Value.Type == "Manager");
-            
-            return dict;
-        }
-        */
+
+
+
+
 
         public Person getPersonById(int id)
         {
@@ -47,21 +64,33 @@ namespace Server
 
         public IEnumerable<Person> getAllPersons()
         {
-            IEnumerable<Person> dict = managersDictionary.Values.AsEnumerable();
+            IEnumerable<Manager> dict = managersDictionary.Values.AsEnumerable();
 
             return dict;
 
-            throw new NotImplementedException();
         }
 
-        public int createPerson(Person human)
+        public int createPerson(Person person)
         {
-            throw new NotImplementedException();
+            if (person == null) throw new ArgumentNullException("Person param is null.");
+
+            int key = managersDictionary.Max(p => p.Key) + 1;
+            person.Id = key;
+            managersDictionary.Add(key, (Manager)person);
+            return key;
         }
 
         public bool delPersonById(int id)
         {
-            throw new NotImplementedException();
+            bool result = managersDictionary.Remove(id);
+            return result;
         }
+
+    
+
+
+
+
+
     }
 }

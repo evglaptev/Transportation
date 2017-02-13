@@ -1,13 +1,13 @@
-﻿using Server.Content;
-using Server.Entities;
-using Server.Interfaces;
+﻿using Portal.Content;
+using Portal.Entities;
+using Portal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server
+namespace Portal
 {
     public class Server
     {
@@ -15,13 +15,15 @@ namespace Server
         IDrivers Drivers { get; set; }
         IClients Clients { get; set; }
 
-        IDictionary<int, Manager> context = DbContext.getDictionaryPerson();
+        IDictionary<int, Manager> testManagers = DbContext.getDictionaryManagers();
+        IDictionary<int, Driver> testDrivers = DbContext.getDictionaryDrivers();
         IDictionary<int, Order> ordersContext = DbContext.getDictionaryOrders();
 
 
         public Server()
         {
-            Managers = new Managers(context);
+            Managers = new Managers(testManagers);
+            Drivers = new Drivers(testDrivers);
             
         }
 
@@ -32,7 +34,7 @@ namespace Server
             order.OrderId = key;
             ordersContext.Add(key, order);
             int driverId = Drivers.getDriverForOrderId(key);
-            
+            order.DriverId = driverId;
             return key;
         }
 
@@ -63,8 +65,17 @@ namespace Server
         public Manager getManagerById(int managerId)
         {
             Manager mng = (Manager)Managers.getPersonById(managerId);
-            if (mng == null) throw new NullReferenceException("Manager with id " + managerId + " not found.");
+            if (mng == null)
+                throw new NullReferenceException("Manager with id " + managerId + " not found.");
             return mng;
+        }
+        public Driver getDriverById(int driverId)
+        {
+            Driver drv = (Driver)Drivers.getPersonById(driverId);
+
+            if (drv == null)
+                throw new NullReferenceException("Driver with id " + driverId + " not found.");
+            return drv;
         }
 
         //ITasks Tasks { get; set; }

@@ -1,39 +1,59 @@
-﻿using Server.Interfaces;
+﻿using Portal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Server.Entities;
+using Portal.Entities;
 
 namespace Portal
 {
-    public class Drivers : IDrivers
+    class Drivers : IDrivers
     {
 
         IDictionary<int, Driver> driversDictionary;
-        public int createPerson(Person human)
+        public Drivers(IDictionary<int, Driver> driversDictionary)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool delPersonById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Person> getAllPersons()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int getDriverForOrderId(int key)
-        {
-            throw new NotImplementedException();
+            this.driversDictionary = driversDictionary;
         }
 
         public Person getPersonById(int id)
         {
-            throw new NotImplementedException();
+            Driver driver;
+            driversDictionary.TryGetValue(id, out driver);
+            return driver;
         }
+
+        public IEnumerable<Person> getAllPersons()
+        {
+            IEnumerable<Driver> dict = driversDictionary.Values.AsEnumerable();
+
+            return dict;
+
+        }
+
+        public int createPerson(Person person)
+        {
+            if (person == null) throw new ArgumentNullException("Person param is null.");
+
+            int key = driversDictionary.Max(p => p.Key) + 1;
+            person.Id = key;
+            driversDictionary.Add(key, (Driver)person);
+            return key;
+        }
+
+        public bool delPersonById(int id)
+        {
+            bool result = driversDictionary.Remove(id);
+            return result;
+        }
+
+        public int getDriverForOrderId(int key)
+        {
+            // It has to considered order`s parametrs (weight, size, etc.)
+            Driver driver = driversDictionary.Values.Where(p => p.isFree == true).First();
+            return driver.Id;
+
+        }
+
     }
 }

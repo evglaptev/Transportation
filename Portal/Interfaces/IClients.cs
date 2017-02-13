@@ -1,4 +1,4 @@
-﻿namespace Server.Interfaces
+﻿namespace Portal.Interfaces
 {
     internal interface IClients:IPersons
     {

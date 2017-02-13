@@ -1,4 +1,4 @@
-﻿using Server.Entities;
+﻿using Portal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ namespace Portal.Controllers
 {
     public class HomeController : Controller
     {
-        static Server.Server serv;
+        static Portal.Server serv;
         public HomeController()
         {
             if (serv == null)
             {
-                serv = new Server.Server();
+                serv = new Portal.Server();
             }
         }
         // GET: Default
@@ -51,6 +51,13 @@ namespace Portal.Controllers
             Manager manager;
             manager = serv.getManagerById(managerId);
             return PartialView(manager);
+        }
+
+        public ActionResult driverInfo(int driverId)
+        {
+            Driver driver;
+            driver = serv.getDriverById(driverId);
+            return PartialView(driver);
         }
     }
 }

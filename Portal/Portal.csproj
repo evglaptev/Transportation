@@ -140,6 +140,7 @@
     <Content Include="Views\Home\getInfoAboutOrder.cshtml" />
     <Content Include="Views\Home\createOrderSuccess.cshtml" />
     <Content Include="Views\Home\managerInfo.cshtml" />
+    <Content Include="Views\Home\driverInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

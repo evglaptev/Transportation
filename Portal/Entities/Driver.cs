@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Entities
+namespace Portal.Entities
 {
-    class Driver : Person
+    public class Driver : Person
     {
+        public Driver()
+        {
+            isFree = true;
+        }
+
         public override string Type
         {
             get
@@ -16,5 +21,6 @@ namespace Server.Entities
             }
         }
         public int managerId { get; set; }
+        public bool isFree { get; set; } // How to store the data about availability drivers?
     }
 }

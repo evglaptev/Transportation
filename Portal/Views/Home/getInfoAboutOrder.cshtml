@@ -1,19 +1,21 @@
-﻿@model Server.Entities.Order
+﻿@model Portal.Entities.Order
 @{
     ViewBag.Title = "Информация о заказе";
 }
 
-<h2>Заказ № @Model.OrderId</h2>
+<h1>Заказ № @Model.OrderId</h1>
 
 @Html.DisplayNameFor(p => p.AddressFrom)
 @Html.DisplayFor(p => p.AddressFrom)
-
+<br/>
 @Html.DisplayNameFor(p => p.AddressTo)
 @Html.DisplayFor(p => p.AddressTo)
-
+<br />
 @Html.DisplayNameFor(p => p.DateTime)
 @Html.DisplayFor(p => p.DateTime)
-
+<br /> 
+<h2>Ваш менеджер</h2>
 @Html.Action("managerInfo", new { managerId = Model.ManagerId })
-
+<h2>Ваш водитель</h2>
+@Html.Action("driverInfo", new { driverId = Model.DriverId })
 

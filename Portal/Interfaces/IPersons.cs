@@ -1,17 +1,17 @@
-﻿using Server.Entities;
+﻿using Portal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Interfaces
+namespace Portal.Interfaces
 {
     interface IPersons
     {
         Person getPersonById(int id);
         IEnumerable<Person> getAllPersons();
-        int createPerson(Person human);
+        int createPerson(Person person);
         bool delPersonById(int id);
     }
 }

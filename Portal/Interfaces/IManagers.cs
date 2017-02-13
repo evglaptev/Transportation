@@ -1,8 +1,9 @@
-﻿using Server.Entities;
+﻿using System.Collections.Generic;
+using Portal.Entities;
 
-namespace Server.Interfaces
+namespace Portal.Interfaces
 {
-    internal interface IManagers : IPersons
+    internal interface IManagers:IPersons
     {
         int getManagerForOrderId(int order);
     }
