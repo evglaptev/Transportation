@@ -16,7 +16,7 @@
     <RootNamespace>Portal</RootNamespace>
     <AssemblyName>Portal</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authentication.cs" />
     <Compile Include="Context\DbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Drivers.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Interfaces\IClients.cs" />
     <Compile Include="Interfaces\IDrivers.cs" />
     <Compile Include="Interfaces\IManagers.cs" />
@@ -167,7 +169,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3987</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3987/</IISUrl>
+          <IISUrl>http://localhost/Portal</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

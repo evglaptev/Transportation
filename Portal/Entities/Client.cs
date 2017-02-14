@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Entities
 {
-    class Client : Person
+   public class Client : Person
     {
         public override string Type
         {
