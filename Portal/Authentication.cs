@@ -11,7 +11,8 @@ namespace Portal
 {
     public class Authentication : IAuthentication
     {
-        private IPrincipal _currentClient
+        Server serv = Server.getServer();
+        private IPrincipal _currentClient;
         public IPrincipal CurrentClient
         {
             get
@@ -21,11 +22,12 @@ namespace Portal
                     try
                     {
                         HttpCookie authCookie = HttpContext.Request.Cookies.Get("__AUTH_COOKIE");
-                        //if authCookie!=null and cookie.value is not empty or null{
+                        if (authCookie!=null&&(!string.IsNullOrEmpty(authCookie.Value)){
                         var ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                        //serv.getClientByName(ticket.Name)
-
-                        //} else
+                            Client client = serv.getClientByName(ticket.Name);
+                            new UserProvider();
+                            UserIdentity
+                        } else
                         //{ _currentClient = null;
 
                     }
@@ -37,12 +39,10 @@ namespace Portal
                 }
                 return _currentClient;
             }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
+
+     
+
 
         public HttpContext HttpContext
         {
@@ -89,6 +89,59 @@ namespace Portal
             HttpContext.Response.Cookies.Set(AuthCookie);
         }
 
+
+    
+
+    internal class UserIndentity : IIdentity
+    {
+        public Client client { get; set; }
+        public string AuthenticationType
+        {
+            get
+            {
+                return typeof(Client).ToString();
+            }
+        }
+            public bool IsAuthenticated
+            {
+                get
+                {
+                    return client != null ? true : false;
+                }
+            }
+
+            public string Name
+            {
+                get
+                {
+                    if (client != null) return client.Id.ToString();
+                    return "Anonym";
+                }
+            }
+        }
+
+
+
+        public class UserProvider : IPrincipal
+        {
+            private UserIndentity userIndentity { get; set; }
+            public IIdentity Identity
+            {
+                get
+                {
+                    return userIndentity;
+                }
+            }
+
+            public bool IsInRole(string role)
+            {
+                if (userIndentity == null)
+                {
+                    return false;
+                }
+                return true;//userIndentity.Client.InRoles(role);  Client to has method wich return true/false for role string parameter.
+            }
+        }
 
     }
 }
