@@ -9,13 +9,11 @@ namespace Portal.Controllers
 {
     public class HomeController : Controller
     {
-        static Portal.Server serv;
+        IServer serv;
         public HomeController()
         {
-            if (serv == null)
-            {
-                serv = new Portal.Server();
-            }
+            serv = Portal.Server.getServer();
+
         }
         // GET: Default
         public ActionResult Index()

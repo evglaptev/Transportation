@@ -8,6 +8,7 @@ namespace Portal.Entities
 {
    public class Client : Person
     {
+
         public override string Type
         {
             get

@@ -17,7 +17,7 @@ namespace Portal.Entities
         [DisplayName("Отчество: ")]
         public  string SecondName { get; set; }
         [DisplayName("Номер телефона: ")]
-        public  string TelNumber { get; set; }
+        public  string phoneNumber { get; set; }
 
         public abstract string Type { get; }
 

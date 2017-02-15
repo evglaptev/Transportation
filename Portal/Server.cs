@@ -9,10 +9,22 @@ using System.Threading.Tasks;
 
 namespace Portal
 {
-    public class Server
+    public class Server:IServer
     {
+        static Server serv;
         IManagers Managers { get; set; }
         IDrivers Drivers { get; set; }
+
+        public static IServer getServer()
+        {
+            if (serv == null)
+            {
+
+                serv =  new Server();
+            }
+            return serv;
+        }
+
         IClients Clients { get; set; }
 
         IDictionary<int, Manager> testManagers = DbContext.getDictionaryManagers();
@@ -20,7 +32,7 @@ namespace Portal
         IDictionary<int, Order> ordersContext = DbContext.getDictionaryOrders();
 
 
-        public Server()
+        private Server()
         {
             Managers = new Managers(testManagers);
             Drivers = new Drivers(testDrivers);
@@ -76,6 +88,16 @@ namespace Portal
             if (drv == null)
                 throw new NullReferenceException("Driver with id " + driverId + " not found.");
             return drv;
+        }
+
+        public Client getClientByPhone(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Client clientLogin(string login, string password)
+        {
+            throw new NotImplementedException();
         }
 
         //ITasks Tasks { get; set; }

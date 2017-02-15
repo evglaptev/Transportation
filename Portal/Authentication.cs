@@ -11,7 +11,7 @@ namespace Portal
 {
     public class Authentication : IAuthentication
     {
-        Server serv = Server.getServer();
+        IServer serv = Server.getServer(); // singletown
         private IPrincipal _currentClient;
         public IPrincipal CurrentClient
         {
@@ -22,26 +22,35 @@ namespace Portal
                     try
                     {
                         HttpCookie authCookie = HttpContext.Request.Cookies.Get("__AUTH_COOKIE");
-                        if (authCookie!=null&&(!string.IsNullOrEmpty(authCookie.Value)){
-                        var ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                            Client client = serv.getClientByName(ticket.Name);
-                            new UserProvider();
-                            UserIdentity
-                        } else
-                        //{ _currentClient = null;
+                        if (authCookie != null && (!string.IsNullOrEmpty(authCookie.Value)))
+                        {
+                            var ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                            _currentClient = new UserProvider(ticket.Name, serv); //ticket Name contain client`s phone.
+                        }
+                        else
+                        {
+                            _currentClient = new UserProvider(null, null);
+                        }
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
+                        _currentClient = new UserProvider(null, null);
                         //Message about error authentication.
 
                     }
                 }
                 return _currentClient;
+
+            }
+
+            set
+            {
+                throw new NotImplementedException();
             }
         }
 
-     
+      
 
 
         public HttpContext HttpContext
@@ -57,10 +66,20 @@ namespace Portal
             }
         }
 
+  
+
         public Client Login(string login, string password)
         {
-
-            // Server serv; serv.login(login,pass) if OK => CreateCookie(userName); return Client
+            Client client = serv.clientLogin(login, password);
+            if (client != null)
+            {
+                CreateCookie(login); // login is a phoneNumber
+            }
+            else
+            {
+                client = null;
+            }
+            return client;
 
         }
 
@@ -95,6 +114,8 @@ namespace Portal
     internal class UserIndentity : IIdentity
     {
         public Client client { get; set; }
+
+            
         public string AuthenticationType
         {
             get
@@ -114,10 +135,19 @@ namespace Portal
             {
                 get
                 {
-                    if (client != null) return client.Id.ToString();
+                    if (client != null) return client.phoneNumber;
                     return "Anonym";
                 }
             }
+            public void Init(string phone, IServer serv)
+            {
+                if (!string.IsNullOrEmpty(phone))
+                {
+                    client = serv.getClientByPhone(phone);
+                }
+
+            }
+
         }
 
 
@@ -132,6 +162,13 @@ namespace Portal
                     return userIndentity;
                 }
             }
+            public UserProvider(string phone, IServer serv)
+            {
+                userIndentity = new UserIndentity();
+                userIndentity.Init(phone, serv);
+
+            }
+
 
             public bool IsInRole(string role)
             {
@@ -143,5 +180,15 @@ namespace Portal
             }
         }
 
+    }
+
+    public interface IServer
+    {
+        int addOrder(Order newOrder);
+        Client clientLogin(string login, string password);
+        Client getClientByPhone(string name);
+        Driver getDriverById(int driverId);
+        Manager getManagerById(int managerId);
+        Order getOrderById(int id);
     }
 }

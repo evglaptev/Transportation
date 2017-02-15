@@ -21,8 +21,8 @@ namespace Portal.Content
             for (int i = 0; i < 10; i++)
             {
                 //Person client = new Client() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
-                Manager manager = new Manager() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
-                Driver driver = new Driver() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), TelNumber = gen.getPhoneNumber() };
+                Manager manager = new Manager() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), phoneNumber = gen.getPhoneNumber() };
+                Driver driver = new Driver() { Id = i, FirstName = gen.getFirstName(), LastName = gen.getLastName(), SecondName = gen.getSecondName(), phoneNumber = gen.getPhoneNumber() };
 
                 //dict.Add(new KeyValuePair<int, Person>(client.Id, client));
                 managers.Add(i, manager);
