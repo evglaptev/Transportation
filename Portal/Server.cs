@@ -34,6 +34,7 @@ namespace Portal
 
         private Server()
         {
+            Clients = new Clients(); //TODO 0 loading from repository saved data.
             Managers = new Managers(testManagers);
             Drivers = new Drivers(testDrivers);
             
@@ -92,12 +93,22 @@ namespace Portal
 
         public Client getClientByPhone(string name)
         {
-            throw new NotImplementedException();
+            Client tmp = Clients.getByPhoneNumber(name);
+            return tmp;
+
         }
 
         public Client clientLogin(string login, string password)
         {
             throw new NotImplementedException();
+        }
+
+        public bool createClient(Client client)
+        {
+
+            Clients.createPerson(client);
+            //TODO Catch exception
+            return true;
         }
 
         //ITasks Tasks { get; set; }

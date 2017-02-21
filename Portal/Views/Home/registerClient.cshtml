@@ -1,0 +1,32 @@
+﻿@model Portal.Entities.Client
+
+@{
+    ViewBag.Title = "registerClient";
+}
+
+<h2>registerClient</h2>
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(p => p.FirstName)
+    @Html.EditorFor(p => p.FirstName)
+    <br />
+    @Html.DisplayNameFor(p => p.SecondName)
+    @Html.EditorFor(p => p.SecondName)
+    <br />
+    @Html.DisplayNameFor(p => p.LastName)
+    @Html.EditorFor(p => p.LastName)
+    <br />
+        @Html.DisplayNameFor(p => p.phoneNumber)
+        @Html.EditorFor(p => p.phoneNumber)
+    <br />
+        @Html.DisplayNameFor(p => p.Password)
+        @Html.EditorFor(p => p.Password)
+
+    <p><input type="submit" value="Регистрация" /></p>
+}
+

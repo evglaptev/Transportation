@@ -18,6 +18,8 @@ namespace Portal.Entities
         public  string SecondName { get; set; }
         [DisplayName("Номер телефона: ")]
         public  string phoneNumber { get; set; }
+        [DisplayName("Пароль: ")]
+        public string Password { get; set; }
 
         public abstract string Type { get; }
 

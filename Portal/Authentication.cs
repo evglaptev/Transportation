@@ -6,6 +6,7 @@ using System.Web;
 using Portal.Entities;
 using System.Security.Principal;
 using System.Web.Security;
+using Ninject;
 
 namespace Portal
 {
@@ -44,10 +45,7 @@ namespace Portal
 
             }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+
         }
 
       
@@ -111,12 +109,12 @@ namespace Portal
 
     
 
-    internal class UserIndentity : IIdentity
+    internal class UserIndentity : IIdentity,IClientProvider
     {
-        public Client client { get; set; }
+         public Client Client { get; set; }
 
-            
-        public string AuthenticationType
+
+            public string AuthenticationType
         {
             get
             {
@@ -127,7 +125,7 @@ namespace Portal
             {
                 get
                 {
-                    return client != null ? true : false;
+                    return Client != null ? true : false;
                 }
             }
 
@@ -135,15 +133,18 @@ namespace Portal
             {
                 get
                 {
-                    if (client != null) return client.phoneNumber;
+                    if (Client != null) return Client.phoneNumber;
                     return "Anonym";
                 }
             }
+
+
+
             public void Init(string phone, IServer serv)
             {
                 if (!string.IsNullOrEmpty(phone))
                 {
-                    client = serv.getClientByPhone(phone);
+                    Client = serv.getClientByPhone(phone);
                 }
 
             }
@@ -182,10 +183,16 @@ namespace Portal
 
     }
 
+    internal interface IClientProvider
+    {
+        Client Client { get; set; }
+    }
+
     public interface IServer
     {
         int addOrder(Order newOrder);
         Client clientLogin(string login, string password);
+        bool createClient(Client client);
         Client getClientByPhone(string name);
         Driver getDriverById(int driverId);
         Manager getManagerById(int managerId);

@@ -1,0 +1,12 @@
+﻿@model Portal.Entities.Client
+
+@if (@Model == null)
+{
+    <li>@Html.ActionLink("Вход", "Login")</li>
+    <li>@Html.ActionLink("Регистрация", "Register")</li>
+}
+else
+{
+    <li>@Html.ActionLink("Выход","LogOut")</li>
+}
+

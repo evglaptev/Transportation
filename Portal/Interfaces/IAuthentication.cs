@@ -9,9 +9,9 @@ using System.Web;
 
 namespace Portal.Interfaces
 {
-    interface IAuthentication
+    public interface IAuthentication
     {
-        IPrincipal CurrentClient { get; set; }
+        IPrincipal CurrentClient { get; }
         HttpContext HttpContext { get; set; }
         Client Login(string login, string password);
         Client LogOut(); 

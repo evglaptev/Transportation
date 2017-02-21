@@ -1,6 +1,9 @@
-﻿namespace Portal.Interfaces
+﻿using Portal.Entities;
+
+namespace Portal.Interfaces
 {
-    internal interface IClients:IPersons
+    internal interface IClients : IPersons
     {
+        Client getByPhoneNumber(string name);
     }
 }
