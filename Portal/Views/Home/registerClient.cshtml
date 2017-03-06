@@ -1,4 +1,4 @@
-﻿@model Portal.Entities.Client
+﻿@model Portal.Models.RegisterViewModel
 
 @{
     ViewBag.Title = "registerClient";
@@ -10,7 +10,7 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Home"))
 {
     @Html.DisplayNameFor(p => p.FirstName)
     @Html.EditorFor(p => p.FirstName)
@@ -21,12 +21,15 @@
     @Html.DisplayNameFor(p => p.LastName)
     @Html.EditorFor(p => p.LastName)
     <br />
-        @Html.DisplayNameFor(p => p.phoneNumber)
-        @Html.EditorFor(p => p.phoneNumber)
+        @Html.DisplayNameFor(p => p.PhoneNumber)
+        @Html.EditorFor(p => p.PhoneNumber)
     <br />
-        @Html.DisplayNameFor(p => p.Password)
-        @Html.EditorFor(p => p.Password)
+    @Html.DisplayNameFor(p => p.Password)
+    @Html.EditorFor(p => p.Password)
+    <br />
+        @Html.DisplayNameFor(p => p.ConfirmPassword)
+        @Html.EditorFor(p => p.ConfirmPassword)
 
-    <p><input type="submit" value="Регистрация" /></p>
+<p><input type = "submit" value = "Регистрация" /></p>
 }
 

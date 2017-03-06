@@ -9,7 +9,17 @@ using System.Threading.Tasks;
 
 namespace Portal
 {
-    public class Server:IServer
+    public interface IServer
+     {
+         int addOrder(Order newOrder);
+         Client clientLogin(string login, string password);
+         Client getClientByPhone(string name);
+         Driver getDriverById(int driverId);
+         Manager getManagerById(int managerId);
+         Order getOrderById(int id);
+        bool createClient(Client client);
+    }
+public class Server:IServer
     {
         static Server serv;
         IManagers Managers { get; set; }
@@ -93,8 +103,8 @@ namespace Portal
 
         public Client getClientByPhone(string name)
         {
-            Client tmp = Clients.getByPhoneNumber(name);
-            return tmp;
+            //Client tmp = Clients.getByPhoneNumber(name);
+            return null;// tmp;
 
         }
 

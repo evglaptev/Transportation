@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Portal.Interfaces
 {
-    public interface IAuthentication
+    public interface IAuthentication11
     {
         IPrincipal CurrentClient { get; }
         HttpContext HttpContext { get; set; }

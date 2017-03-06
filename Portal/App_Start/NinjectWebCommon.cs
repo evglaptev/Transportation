@@ -1,4 +1,4 @@
-﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Portal.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Portal.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Portal.App_Start.NinjectWebCommon), "Stop")]
 
 namespace Portal.App_Start
@@ -10,7 +10,7 @@ namespace Portal.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Interfaces;
+
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,7 +61,6 @@ namespace Portal.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IAuthentication>().To<Authentication>().InRequestScope();
         }        
     }
 }
